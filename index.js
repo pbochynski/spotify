@@ -7,9 +7,9 @@ var spotifyApp = require('./spotify').app;
 require('newrelic');
 
 if (process.env.BASIC_AUTH_PASS)
-app.use(basicAuth(function (user, pass) {
-	return process.env.BASIC_AUTH_PASS === pass || process.env.BASIC_AUTH_PASS2 === pass;
-}));
+	app.use(basicAuth(function (user, pass) {
+		return process.env.BASIC_AUTH_PASS === pass || process.env.BASIC_AUTH_PASS2 === pass;
+	}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -30,7 +30,6 @@ app.get('/', function (req, res) {
 app.use(spotifyApp);
 
 
-
 var port = process.env.PORT || config.get('defaultPort');
 app.listen(port);
-console.log('Listening on port %s',port);
+console.log('Listening on port %s', port);
