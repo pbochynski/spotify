@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pbochynski/spotify.svg?branch=master)](https://travis-ci.org/pbochynski/spotify)
+
 # YaaS node.js service template
 
 This service is very simple implementation of wishlist service used in YaaS getting started guides. 
