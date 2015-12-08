@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "engines" : {
+  "engines": {
     "node": "0.12.x"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "express": "^4.13.3",
     "express-raml-store": "^1.2.0",
     "lru-cache": "^2.7.0",
+    "newrelic": "^1.24.0",
     "node-uuid": "^1.4.3",
     "path": "^0.12.7",
     "request": "^2.65.0"
