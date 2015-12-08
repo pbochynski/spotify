@@ -6,10 +6,6 @@ var app = express();
 var spotifyApp = require('./spotify').app;
 require('newrelic');
 
-if (process.env.BASIC_AUTH_PASS)
-	app.use(basicAuth(function (user, pass) {
-		return process.env.BASIC_AUTH_PASS === pass || process.env.BASIC_AUTH_PASS2 === pass;
-	}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -26,6 +22,11 @@ function basePath(req) {
 app.get('/', function (req, res) {
 	res.redirect(basePath(req) + "/api-console/");
 });
+
+if (process.env.BASIC_AUTH_PASS)
+	app.use(basicAuth(function (user, pass) {
+		return process.env.BASIC_AUTH_PASS === pass || process.env.BASIC_AUTH_PASS2 === pass;
+	}));
 
 app.use(spotifyApp);
 
