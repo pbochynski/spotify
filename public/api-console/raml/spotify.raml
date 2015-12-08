@@ -1,0 +1,63 @@
+#%RAML 0.8
+title: spotify
+baseUri: /
+version: v1
+mediaType:  application/json
+
+traits: 
+  - !include https://api.yaas.io/patterns/v2/trait-oauth2.yaml
+
+
+/users/{userId}/playlists:
+  is: [oauth2]
+  post:
+    body:
+      application/json:
+        example: |
+          {
+            "name": "My playlist",
+            "public": false
+          }
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "name": "My playlist",
+                "public": false,
+                "tracks" : [
+                    {
+                      "id": "6",
+                      "name": "Santa Is in Trouble"
+                    },
+                    {
+                      "id": "7",
+                      "name": "We Wish You a Merry Christmas"
+                    }
+                ]
+              }
+  /{id}:
+    is: [oauth2]
+    put:
+      body:
+        application/json:
+          example: |
+            {
+              "name": "My playlist",
+              "public": true
+            }
+    get:
+    /tracks:
+      is: [oauth2]
+      post:
+        queryParameters:
+          ids:
+            required: true
+            example: 1,2,3
+      delete:
+        queryParameters:
+          ids:
+            required: true
+            example: 1,2,3
