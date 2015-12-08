@@ -1,9 +1,14 @@
+var basicAuth = require('basic-auth-connect');
 var express = require('express');
 var path = require('path');
 var config = require('config');
 var app = express();
 var spotifyApp = require('./spotify').app;
 
+if (process.env.BASIC_AUTH_PASS)
+app.use(basicAuth(function (user, pass) {
+	return process.env.BASIC_AUTH_PASS === pass || process.env.BASIC_AUTH_PASS2 === pass;
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 

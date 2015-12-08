@@ -16,6 +16,9 @@
   <script src="scripts/api-console.min.js"></script>
   <script>
     $.noConflict();
+    // If api-console is accessed through proxy we need to prefix all requests
+    // with base path (everything before /api-console/)
+    RAML.Settings.proxy = window.location.pathname.substring(0,window.location.pathname.indexOf('/api-console/'));
   </script>
 </body>
 </html>
