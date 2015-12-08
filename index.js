@@ -4,6 +4,7 @@ var path = require('path');
 var config = require('config');
 var app = express();
 var spotifyApp = require('./spotify').app;
+require('newrelic');
 
 if (process.env.BASIC_AUTH_PASS)
 app.use(basicAuth(function (user, pass) {
