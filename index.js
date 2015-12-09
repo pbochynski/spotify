@@ -29,8 +29,8 @@ if (process.env.BASIC_AUTH_PASS)
 	}));
 
 app.use(spotifyApp);
+app.get('/vcap', function(req,res){res.send(process.env.VCAP_APPLICATION)});
 
-
-var port = process.env.PORT || config.get('defaultPort');
+var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Listening on port %s', port);

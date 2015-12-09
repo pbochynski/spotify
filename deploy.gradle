@@ -1,8 +1,8 @@
 cloudfoundry {
-	application = 'wishlists'
+	application = 'spotify'
 	hosts = [application]
 	host = application
-	buildpack = 'nodejs_buildpack'
+	buildpack = 'https://github.com/heroku/heroku-buildpack-nodejs'
 	file = file('.')
 	memory = 256
 	healthCheckTimeout = 180
@@ -15,21 +15,6 @@ cloudfoundry {
 			"APP_NAME"      : application,
 	]
 	command = 'node index.js'
-	username = 'team-toad@sap.com'
-	space = 'toad'
-}
-if (project.hasProperty('aws-prod')) {
-	cloudfoundry {
-		target = 'http://api.us-east.cf.yaas.io'
-		organization = "core-prod"
-		space = 'toad'
-		domain = 'us-east.internal.yaas.io'
-		instances = 2
-		env << [
-				"ENV_NAME"      : "core-prod",
-				"NODE_ENV"      : "aws-prod"
-		]
-	}
 }
 if (project.hasProperty('pivotal')) {
 	cloudfoundry {
@@ -38,22 +23,5 @@ if (project.hasProperty('pivotal')) {
 		space = 'development'
 		domain = 'cfapps.io'
 		instances = 1
-		env << [
-				"NODE_ENV"      : "pivotal"
-		]
-	}
-}
-
-
-if (project.hasProperty('aws-stage')) {
-	cloudfoundry {
-		target = 'https://api.us-east.stage.cf.yaas.io'
-		organization = "core-stage"
-		domain = 'us-east.stage.internal.yaas.io'
-		instances = 2
-		env << [
-				"ENV_NAME"      : "core-stage",
-				"NODE_ENV"      : "aws-stage"
-		]
 	}
 }
