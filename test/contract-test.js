@@ -3,7 +3,7 @@ var should = require('should');
 var app = require('../spotify').app;
 
 
-describe('Spotify contract test', function(){
+describe('Spotify contract test 3', function(){
 	var listId;
 	it('should create new playlist', function(done){
 		request(app)
