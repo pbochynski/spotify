@@ -2,9 +2,9 @@ require('newrelic');
 var basicAuth = require('basic-auth-connect');
 var express = require('express');
 var path = require('path');
-var config = require('config');
 var app = express();
 var spotifyApp = require('./spotify').app;
+var statisticsApp = require('./statistics').statisticsApp;
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,6 +29,8 @@ if (process.env.BASIC_AUTH_PASS)
 	}));
 
 app.use(spotifyApp);
+app.use(statisticsApp);
+
 app.get('/vcap', function(req,res){res.send(process.env.VCAP_APPLICATION)});
 
 var port = process.env.PORT || 3000;

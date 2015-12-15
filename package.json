@@ -14,9 +14,11 @@
   "dependencies": {
     "basic-auth-connect": "^1.0.0",
     "body-parser": "^1.14.1",
+    "circuit-breaker-js": "0.0.1",
     "config": "^1.16.0",
     "express": "^4.13.3",
     "express-raml-store": "^1.2.0",
+    "limiter": "^1.1.0",
     "lru-cache": "^2.7.0",
     "newrelic": "^1.24.0",
     "node-uuid": "^1.4.3",

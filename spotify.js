@@ -24,7 +24,7 @@ app.post('/users/:userId/playlists', function (req, res) {
 });
 
 function findPlaylist(req, res, next) {
-	var id = req.params.playlistId
+	var id = req.params.playlistId;
 	var playlist = playlists.get(id);
 	if (!playlist || playlist.userId !== req.params.userId) {
 		return res.status(404).send({message: "Playlist not found"});
@@ -37,9 +37,10 @@ app.get('/users/:userId/playlists/:playlistId', findPlaylist, function (req, res
 	res.send(req.playlist);
 });
 
+
 app.put('/users/:userId/playlists/:playlistId', findPlaylist, function (req, res) {
-	if (!req.body){
-		return res.status(400).send({message:"Wrong message body"});
+	if (!req.body) {
+		return res.status(400).send({message: "Wrong message body"});
 	}
 	req.body.userId = req.params.userId;
 	req.body.id = req.params.playlistId;
@@ -84,5 +85,7 @@ app.delete('/users/:userId/playlists/:playlistId/tracks', findPlaylist, function
 	}
 	res.send();
 });
+
+
 
 exports.app = app;

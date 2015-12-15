@@ -61,3 +61,14 @@ traits:
           ids:
             required: true
             example: 1,2,3
+/statistics/{name}:
+  displayName: some stat
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {
+                "response": "name"
+              }
