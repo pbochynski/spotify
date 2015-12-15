@@ -1,4 +1,4 @@
-require('newrelic');
+//require('newrelic');
 var basicAuth = require('basic-auth-connect');
 var express = require('express');
 var path = require('path');
